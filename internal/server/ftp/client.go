@@ -71,6 +71,7 @@ func (c *Client) Common() model.Common {
 func (c *Client) ReadDir(path string) ([]os.FileInfo, error) {
 	var files []*ftp.Entry
 	files, err := c.ftp.List(regexp.QuoteMeta(path))
+	log.Debug().Str("获取到的路径", files)
 	if err != nil {
 		return nil, err
 	}
